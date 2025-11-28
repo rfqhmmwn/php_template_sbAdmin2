@@ -4,6 +4,7 @@ if (isset($_SESSION['loggedin']) == false)
     {
         header("Location: login.php");  
     }
+include 'inc/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +42,7 @@ if (isset($_SESSION['loggedin']) == false)
          <?php
             include 'inc/sidebar.php';
         ?>
-        
+       
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
