@@ -7,7 +7,7 @@
         <!-- Page Heading -->
         <div class="d-flex justify-content-between">
             <h1 class="h3 mb-2 text-gray-800 ">Users</h1>
-            <button onclick=location.href="form_add.users.php" class="btn btn-primary btn-user btn-block" style="max-width: 200px; margin-bottom: 20px;">
+            <button onclick=location.href="form_add_users.php" class="btn btn-primary btn-user btn-block" style="max-width: 200px; margin-bottom: 20px;">
                 Add
             </button>
         </div>
@@ -35,6 +35,7 @@
                                 <th>Last Name</th>
                                 <th>Company</th>
                                 <th>Phone</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -47,6 +48,7 @@
                                 <th>Last Name</th>
                                 <th>Company</th>
                                 <th>Phone</th>
+                                <th>Aksi</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -60,8 +62,24 @@
                                     <td><?php echo $row['last_name']; ?></td>
                                     <td><?php echo $row['company']; ?></td>
                                     <td><?php echo $row['phone']; ?></td>
+                                    <td style="float: center;">
+                                         <a href="users.php?action=hapus&id=<?php echo $row['id'];?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                                         <a href="form_edit_users.php?id=<?php echo $row['id'];?>" class="btn btn-warning btn-sm">Edit</a>
+                                    </td>
                                 </tr>
                             <?php endwhile; ?>
+                            <?php
+                                if(isset($_GET['action']) == 'hapus' && isset($_GET['id'])) 
+                                    {   
+                                    $get_id = $_GET['id'];
+
+                                    $query = "DELETE FROM `users` WHERE id = $get_id";
+                                    $result = $db->query($query);
+
+                                    echo '<script>window.location.href = "users.php"</script>';
+                                    
+                                    }
+                            ?>
                         </tbody>
                     </table>
                 </div>

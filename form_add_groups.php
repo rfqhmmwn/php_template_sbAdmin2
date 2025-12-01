@@ -22,7 +22,7 @@
             </button>
         </div>
         <div class="card">
-            <form action="form_add.groups.php" method="post">
+            <form action="form_add_groups.php" method="post">
                 <div class="card-body">
                     <div class="form-group">
                         <label for ="exampleInputName">Name</label>
