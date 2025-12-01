@@ -1,5 +1,5 @@
 <?php
-    include 'inc/header.php';   
+    include 'inc/header.php';      
 ?>
     <!-- Begin Page Content -->
     <div class="container-fluid">
@@ -7,9 +7,25 @@
         <!-- Page Heading -->
         <div class="d-flex justify-content-between">
             <h1 class="h3 mb-2 text-gray-800 ">Groups</h1>
+            <?php 
+                if(isset($_SESSION['message']) == TRUE)
+                    {
+                        // echo $_SESSION['message'];
+                        $message = $_SESSION['message'];
+                        
+                        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                ' . $message . '
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>';
+                        unset($_SESSION['message']);
+                    }
+            ?>
             <button onclick=location.href="form_add_groups.php" class="btn btn-primary btn-user btn-block" style="max-width: 200px; margin-bottom: 20px;">
                 Add
             </button>
+            
         </div>
 
         <!-- DataTales Example -->
@@ -21,8 +37,6 @@
                 <div class="table-responsive">
                     <?php   
                         $query = $db->query("SELECT * FROM `groups`");
-
-                        // $result = $query->fetch_all();
                     ?>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -63,6 +77,12 @@
 
                                     echo '<script>window.location.href = "groups.php"</script>';
                                     
+                                    }
+                            ?>
+                            <?php
+                                if(isset($_GET['action']) == 'hapus') 
+                                    {    
+                                        $_SESSION['message'] = "Data berhasil dihapus.";
                                     }
                             ?>
                         </tbody>

@@ -7,6 +7,23 @@
         <!-- Page Heading -->
         <div class="d-flex justify-content-between">
             <h1 class="h3 mb-2 text-gray-800 ">Users</h1>
+            <?php 
+                if(isset($_SESSION['message']) == TRUE)
+                    {
+                        // echo $_SESSION['message'];
+                        $message = $_SESSION['message'];
+                        // echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                        //         ' . $message . '
+                        //       </div>';
+                        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                ' . $message . '
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>';
+                        unset($_SESSION['message']);
+                    }
+            ?>
             <button onclick=location.href="form_add_users.php" class="btn btn-primary btn-user btn-block" style="max-width: 200px; margin-bottom: 20px;">
                 Add
             </button>
@@ -78,6 +95,12 @@
 
                                     echo '<script>window.location.href = "users.php"</script>';
                                     
+                                    }
+                            ?>
+                            <?php
+                                if(isset($_GET['action']) == 'hapus') 
+                                    {    
+                                        $_SESSION['message'] = "Data berhasil dihapus.";
                                     }
                             ?>
                         </tbody>

@@ -13,6 +13,8 @@
         $query = "UPDATE `groups` SET name = '$name', description = '$description' WHERE id = $get_id";
         $result = $db->query($query);
 
+        $_SESSION['message'] = "Group edited successfully.";
+
         echo '<script>window.location.href = "groups.php"</script>';
     }
 ?>

@@ -15,10 +15,11 @@
         $last_name = $_POST['last_name'];
         $company = $_POST['company'];
         $phone = $_POST['phone'];
-        $random = rand();
 
         $query = "UPDATE `users` set username = '$username', password = '$password', email = '$email', first_name = '$first_name', last_name = '$last_name', company = '$company', phone = '$phone' where id = $get_id";
         $result = $db->query($query);
+
+        $_SESSION['message'] = "Users edited successfully.";
 
         echo '<script>window.location.href = "users.php"</script>';
     }

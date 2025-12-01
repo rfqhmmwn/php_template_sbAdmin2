@@ -1,5 +1,6 @@
 <?php
 session_start();    
+include 'inc/function.php';
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     header("Location: index.php");
