@@ -5,6 +5,7 @@ if (isset($_SESSION['loggedin']) == false)
         header("Location: login.php");  
     }
 include 'inc/config.php';
+include 'inc/function.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

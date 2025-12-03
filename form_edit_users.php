@@ -2,10 +2,7 @@
     include 'inc/header.php';   
 
     $get_id = $_GET['id'];
-    $query = "SELECT * FROM `users` WHERE id = $get_id";
-    $get_edit = $db->query($query);
-    $data = $get_edit->fetch_assoc();
-
+    $data = get_users_by_id($get_id);
 
     if (isset($_POST['submit']) == TRUE) {
         $username = $_POST['username'];
@@ -16,8 +13,7 @@
         $company = $_POST['company'];
         $phone = $_POST['phone'];
 
-        $query = "UPDATE `users` set username = '$username', password = '$password', email = '$email', first_name = '$first_name', last_name = '$last_name', company = '$company', phone = '$phone' where id = $get_id";
-        $result = $db->query($query);
+        edit_users($get_id, $username, $password, $email, $first_name, $last_name, $company, $phone);
 
         $_SESSION['message'] = "Users edited successfully.";
 

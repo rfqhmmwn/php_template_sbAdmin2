@@ -2,20 +2,13 @@
     include 'inc/header.php';   
 
     $get_id = $_GET['id'];
-    $query = "SELECT * FROM `groups` WHERE id = $get_id";
-    $get_edit = $db->query($query);
-    $data = $get_edit->fetch_assoc();
+    $data = get_groups_by_id($get_id);
 
     if (isset($_POST['submit']) == TRUE) {
         $name = $_POST['name'];
         $description = $_POST['description'];
 
-        $query = "UPDATE `groups` SET name = '$name', description = '$description' WHERE id = $get_id";
-        $result = $db->query($query);
-
-        $_SESSION['message'] = "Group edited successfully.";
-
-        echo '<script>window.location.href = "groups.php"</script>';
+        edit_groups($get_id, $name, $description);
     }
 ?>
     <!-- Begin Page Content -->

@@ -5,18 +5,13 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
         $email = $_POST['email'];
-        $first_name = $_POST['frsrt_name'];
+        $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
         $company = $_POST['company'];
         $phone = $_POST['phone'];
         $random = rand();
 
-        $query = "INSERT INTO `users`(`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES (null,'$random','$username','$password','$email','$random','$random','$random','$random','$random','$random','$random','$random','$random','1','$first_name','$last_name','$company','$phone')";
-        $result = $db->query($query);
-
-        $_SESSION['message'] = "Users added successfully.";
-
-        echo '<script>window.location.href = "users.php"</script>';
+        add_user($username, $password, $email, $first_name, $last_name, $company, $phone, $random);
     }
 ?>
     <!-- Begin Page Content -->

@@ -5,12 +5,7 @@
         $name = $_POST['name'];
         $description = $_POST['description'];
 
-        $query = "INSERT INTO `groups` (id, name, description) VALUES (null, '$name', '$description')";
-        $result = $db->query($query);
-
-        $_SESSION['message'] = "Group added successfully.";
-
-        echo '<script>window.location.href = "groups.php"</script>';
+        add_group($name, $description);
     }
 ?>
     <!-- Begin Page Content -->
