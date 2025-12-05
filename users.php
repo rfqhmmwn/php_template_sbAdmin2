@@ -1,18 +1,17 @@
 <?php
     include 'inc/header.php';   
+    $users = new Users;
 ?>
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <div class="d-flex justify-content-between">
-            <h1 class="h3 mb-2 text-gray-800 ">Users</h1>
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="h3 mb-4 text-gray-800 ">Users</h1>
             <?php 
                 session_message();
             ?>
-            <button onclick=location.href="form_add_users.php" class="btn btn-primary btn-user btn-block" style="max-width: 200px; margin-bottom: 20px;">
-                Add
-            </button>
+             <a href="form_add_users.php" class="btn btn-primary d-sm-inline-block d-none">Add</a>
         </div>
 
         <!-- DataTales Example -->
@@ -50,7 +49,7 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            <?php foreach(get_users() as $row) : ?>
+                            <?php foreach($users->get_users() as $row) : ?>
                                 <tr>
                                     <td><?php echo $row['id']; ?></td>
                                     <td><?php echo $row['username']; ?></td>
@@ -70,7 +69,7 @@
                                 if(isset($_GET['action']) == 'hapus' && isset($_GET['id'])) 
                                     {   
                                         $id = $_GET['id'];
-                                        delete_users($id);
+                                        $users->delete_users($id);
                                     }
                             ?>
                         </tbody>

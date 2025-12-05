@@ -1,23 +1,32 @@
 <?php
     include 'inc/header.php';   
+    $groups = new Groups;
 
     if (isset($_POST['submit']) == TRUE) {
         $name = $_POST['name'];
         $description = $_POST['description'];
 
-        add_group($name, $description);
+       $groups->add_group($name, $description);
     }
 ?>
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between align-items-center">
             <h1 class="h3 mb-4 text-gray-800">Form Add Groups</h1>
-            <button onclick=location.href="groups.php" class="btn btn-primary btn-user btn-block" style="max-width: 100px; margin-bottom: 20px;">
-                <-
-            </button>
+            <a href="groups.php" class="btn btn-primary btn-sm d-sm-inline-block d-none"><i class="fas fa-chevron-left"></i> kembali</a>
         </div>
+        <!-- <div class="row">
+            <div class="col">
+            <h1 class="h3 mb-4 text-gray-800">Form Add Groups</h1>
+            </div>
+            <div class="col">
+                <div class="float-right">
+                    <a href="groups.php" class="btn btn-primary btn-sm d-sm-inline-block d-none"><i class="fas fa-chevron-left"></i> kembali</a>
+                </div>
+            </div>
+        </div> -->
         <div class="card">
             <form action="form_add_groups.php" method="post">
                 <div class="card-body">

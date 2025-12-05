@@ -1,19 +1,17 @@
 <?php
     include 'inc/header.php';      
+    $groups = new Groups;
 ?>
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between align-items-center">
             <h1 class="h3 mb-2 text-gray-800 ">Groups</h1>
             <?php 
                 session_message();
             ?>
-            <button onclick=location.href="form_add_groups.php" class="btn btn-primary btn-user btn-block" style="max-width: 200px; margin-bottom: 20px;">
-                Add
-            </button>
-            
+            <a href="form_add_users.php" class="btn btn-primary d-sm-inline-block d-none">Add</a>
         </div>
 
         <!-- DataTales Example -->
@@ -41,7 +39,7 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            <?php foreach(get_groups() as $row) : ?>
+                            <?php foreach($groups->get_groups() as $row) : ?>
                                 <tr>
                                     <td><?php echo $row['id']; ?></td>
                                     <td><?php echo $row['name']; ?></td>
@@ -56,7 +54,7 @@
                                 if(isset($_GET['action']) == 'hapus' && isset($_GET['id'])) 
                                     {   
                                         $id = $_GET['id'];
-                                        delete_groups($id);                            
+                                        $groups->delete_groups($id);                            
                                     }
                             ?>
                         </tbody>

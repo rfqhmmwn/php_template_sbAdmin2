@@ -1,5 +1,6 @@
 <?php
     include 'inc/header.php';   
+    $users = new Users;
 
     if (isset($_POST['submit']) == TRUE) {
         $username = $_POST['username'];
@@ -11,18 +12,16 @@
         $phone = $_POST['phone'];
         $random = rand();
 
-        add_user($username, $password, $email, $first_name, $last_name, $company, $phone, $random);
+        $users->add_user($username, $password, $email, $first_name, $last_name, $company, $phone, $random);
     }
 ?>
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between align-items-center">
             <h1 class="h3 mb-4 text-gray-800">Form Add Users</h1>
-            <button onclick=location.href="users.php" class="btn btn-primary btn-user btn-block" style="max-width: 100px; margin-bottom: 20px;">
-                <-
-            </button>
+            <a href="users.php" class="btn btn-primary btn-sm d-sm-inline-block d-none"><i class="fas fa-chevron-left"></i> kembali</a>
         </div>
         <div class="card">
             <form action="form_add_users.php" method="post">

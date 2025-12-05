@@ -1,25 +1,24 @@
 <?php
     include 'inc/header.php';   
+    $groups = new Groups;
 
     $get_id = $_GET['id'];
-    $data = get_groups_by_id($get_id);
+    $data = $groups->get_groups_by_id($get_id);
 
     if (isset($_POST['submit']) == TRUE) {
         $name = $_POST['name'];
         $description = $_POST['description'];
 
-        edit_groups($get_id, $name, $description);
+        $groups->edit_groups($get_id, $name, $description);
     }
 ?>
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between align-items-center">
             <h1 class="h3 mb-4 text-gray-800">Form Edit Groups</h1>
-            <button onclick=location.href="groups.php" class="btn btn-primary btn-user btn-block" style="max-width: 100px; margin-bottom: 20px;">
-                <-
-            </button>
+            <a href="groups.php" class="btn btn-primary btn-sm d-sm-inline-block d-none"><i class="fas fa-chevron-left"></i> kembali</a>
         </div>
         <div class="card">
             <form action="form_edit_groups.php?id=<?php echo $get_id;?>" method="post">
