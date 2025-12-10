@@ -11,7 +11,7 @@
             <?php 
                 session_message();
             ?>
-            <a href="form_add_users.php" class="btn btn-primary d-sm-inline-block d-none">Add</a>
+            <a href="form_add_groups.php" class="btn btn-primary d-sm-inline-block d-none">Add</a>
         </div>
 
         <!-- DataTales Example -->
